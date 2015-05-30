@@ -52,3 +52,34 @@ PropertyValue PropertyVariable::get() const {
   return PropertyValue(term().asString());
 }
 
+/**
+ * PropertyVector
+ */
+static std::vector<PrologTerm> asPrologTerms(std::vector<PropertyValue> values) {
+  std::vector<PrologTerm> terms;
+  for (auto value : values) {
+    terms.push_back(value.term());
+  }
+  return terms;
+}
+
+PropertyVector::PropertyVector(std::initializer_list<PropertyValue> values)
+    : terms_(asPrologTerms(values)) {
+}
+
+PropertyVector::PropertyVector(std::vector<PropertyValue> values)
+    : terms_(asPrologTerms(values)) {
+}
+
+PropertyVector::PropertyVector(PrologTermVector terms)
+    : terms_(terms) {
+}
+
+PrologTermVector PropertyVector::term() const {
+  return terms_;
+}
+
+size_t PropertyVector::size() const {
+  return terms_.size();
+}
+

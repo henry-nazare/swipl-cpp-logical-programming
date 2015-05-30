@@ -42,3 +42,17 @@ public:
   PropertyValue get() const;
 };
 
+class PropertyVector {
+public:
+  PropertyVector(std::initializer_list<PropertyValue> values);
+  PropertyVector(std::vector<PropertyValue> values);
+  PropertyVector(PrologTermVector terms);
+
+  PrologTermVector term() const;
+
+  size_t size() const;
+
+private:
+  PrologTermVector terms_;
+};
+
