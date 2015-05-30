@@ -1,0 +1,3 @@
+[submodule "ext/swipl-cpp-bindings/src"]
+	path = ext/swipl-cpp-bindings/src
+	url = https://github.com/henry-nazare/swipl-cpp-bindings
