@@ -34,3 +34,11 @@ private:
   PrologTerm term_;
 };
 
+class PropertyVariable : public PropertyValue {
+public:
+  PropertyVariable();
+
+  // Get the PropertyValue this variable is bound to in a query.
+  PropertyValue get() const;
+};
+

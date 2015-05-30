@@ -40,3 +40,15 @@ std::string PropertyValue::uuid() const {
   return uuid_.str();
 }
 
+/**
+ * PropertyVariable
+ */
+PropertyVariable::PropertyVariable()
+    : PropertyValue(PrologVariable()) {
+}
+
+PropertyValue PropertyVariable::get() const {
+  // All non-variable properties should be strings with valid UUIDs.
+  return PropertyValue(term().asString());
+}
+
