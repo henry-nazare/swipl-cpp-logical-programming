@@ -25,7 +25,7 @@ endfunction()
 
 function(add_gtest_test PREFIX)
   add_executable(${PREFIX} ${PREFIX}.cpp)
-  target_link_libraries(${PREFIX} ${GTEST_BOTH_LIBS} swipl swiplcpp)
+  target_link_libraries(${PREFIX} ${GTEST_BOTH_LIBS} swipl swiplcpplp)
   add_gtest_all_tests(${PREFIX}.cpp ${PREFIX})
 endfunction()
 
