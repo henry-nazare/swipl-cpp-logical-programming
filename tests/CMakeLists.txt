@@ -29,5 +29,6 @@ function(add_gtest_test PREFIX)
   add_gtest_all_tests(${PREFIX}.cpp ${PREFIX})
 endfunction()
 
+add_gtest_test(PropertyMapTest)
 add_gtest_test(PropertyVaultTest)
 
