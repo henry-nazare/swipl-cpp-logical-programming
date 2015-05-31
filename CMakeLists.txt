@@ -20,3 +20,5 @@ add_library(swiplcpplp SHARED src/Properties.cpp)
 target_link_libraries(swiplcpplp swiplcpp)
 add_dependencies(swiplcpplp ${PLBINDINGS_PROJECT_NAME})
 
+add_subdirectory("ext/gtest")
+
