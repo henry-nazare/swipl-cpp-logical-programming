@@ -103,3 +103,8 @@ void PropertyQuery::apply(std::function<void ()> callback) {
   });
 }
 
+bool std::less<PropertyValue>
+    ::operator()(const PropertyValue& lhs, const PropertyValue& rhs) const {
+  return std::less<std::string>()(lhs.uuid(), rhs.uuid());
+}
+

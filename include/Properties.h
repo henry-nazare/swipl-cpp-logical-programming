@@ -7,14 +7,6 @@
 #include <vector>
 
 class PropertyValue {
-public:
-  PropertyValue();
-  PropertyValue(PrologTerm term);
-
-  PrologTerm term() const;
-
-  std::string uuid() const;
-
 protected:
   class UUID {
   public:
@@ -27,7 +19,14 @@ protected:
     std::string uuid_;
   };
 
+public:
+  PropertyValue();
+  PropertyValue(PrologTerm term);
   PropertyValue(UUID uuid, PrologTerm term);
+
+  PrologTerm term() const;
+
+  std::string uuid() const;
 
 private:
   UUID uuid_;
@@ -70,4 +69,10 @@ public:
 private:
   PrologQuery query_;
 };
+
+namespace std {
+  template<> struct std::less<PropertyValue> {
+    bool operator()(const PropertyValue& lhs, const PropertyValue& rhs) const;
+  };
+}
 
