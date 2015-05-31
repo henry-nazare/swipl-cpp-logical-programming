@@ -49,7 +49,7 @@ PropertyVariable::PropertyVariable()
 
 PropertyValue PropertyVariable::get() const {
   // All non-variable properties should be strings with valid UUIDs.
-  return PropertyValue(term().asString());
+  return PropertyValue(term().asString().str(), term().asString());
 }
 
 /**
