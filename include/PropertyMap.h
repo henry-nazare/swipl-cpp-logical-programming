@@ -37,7 +37,6 @@ public:
   }
 
   T get(PropertyValue property) const {
-    property_type_map_.find(property),
     return lookup(property).get()->second;
   }
 
