@@ -56,3 +56,8 @@ private:
   PrologTermVector terms_;
 };
 
+class PropertyFunctor : public PropertyValue {
+public:
+  PropertyFunctor(std::string property, PropertyVector vector);
+};
+

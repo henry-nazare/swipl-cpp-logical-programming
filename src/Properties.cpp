@@ -83,3 +83,10 @@ size_t PropertyVector::size() const {
   return terms_.size();
 }
 
+/**
+ * PropertyFunctor
+ */
+PropertyFunctor::PropertyFunctor(std::string property, PropertyVector vector)
+    : PropertyValue(PrologFunctor(property, vector.term())) {
+}
+
