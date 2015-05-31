@@ -61,3 +61,13 @@ public:
   PropertyFunctor(std::string property, PropertyVector vector);
 };
 
+class PropertyQuery {
+public:
+  PropertyQuery(PropertyFunctor functor);
+
+  void apply(std::function<void ()> callback);
+
+private:
+  PrologQuery query_;
+};
+

@@ -90,3 +90,16 @@ PropertyFunctor::PropertyFunctor(std::string property, PropertyVector vector)
     : PropertyValue(PrologFunctor(property, vector.term())) {
 }
 
+/**
+ * PropertyQuery
+ */
+PropertyQuery::PropertyQuery(PropertyFunctor functor)
+    : query_(functor.term().asFunctor()) {
+}
+
+void PropertyQuery::apply(std::function<void ()> callback) {
+  query_.apply([&](PrologTermVector) {
+    callback();
+  });
+}
+
