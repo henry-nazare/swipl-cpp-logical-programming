@@ -23,5 +23,12 @@ public:
       this->push_back(conv(it));
     }
   }
+
+  template<typename U>
+  PropertyGenerator(U iterable) {
+    for (auto& it : iterable) {
+      this->push_back(it);
+    }
+  }
 };
 
