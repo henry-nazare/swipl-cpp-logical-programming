@@ -55,9 +55,18 @@ public:
   }
 
   static PropertyMap<T> fromGenerator(PropertyGenerator<T> generator) {
+    return fromGenerators({generator});
+  }
+
+  static PropertyMap<T>
+      fromGenerators(std::vector<PropertyGenerator<T>> generators) {
     PropertyMap<T> map;
-    for (auto& item : generator) {
-      map.put(PropertyValue(), item);
+    for (auto &generator : generators) {
+      for (auto& item : generator) {
+        if (!map.lookup(item).isPresent()) {
+          map.put(PropertyValue(), item);
+        }
+      }
     }
     return map;
   }
