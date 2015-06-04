@@ -24,18 +24,11 @@ class PropertyVaultTest : public ::testing::Test {
 };
 
 TEST_F(PropertyVaultTest, ExampleSucc) {
-  PropertyGenerator<int> nums(
-      std::vector<int>({1, 2, 3}),
-      (std::function<int (int)>) [](int i) { return i; });
+  PropertyGenerator<int> nums(std::vector<int>({1, 2, 3}));
   PropertyGenerator<int> succs(
       nums, (std::function<int (int)>) [](int i) { return i + 1; });
 
-  PropertyMap<int> map;
-  map.put(PropertyValue(), 1);
-  map.put(PropertyValue(), 2);
-  map.put(PropertyValue(), 3);
-  map.put(PropertyValue(), 4);
-
+  PropertyMap<int> map = PropertyMap<int>::fromGenerators({nums, succs});
   PropertyBag bag(map, nums, succs);
 
   PropertyVault vault;
