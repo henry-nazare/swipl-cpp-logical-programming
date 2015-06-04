@@ -91,6 +91,20 @@ PropertyFunctor::PropertyFunctor(std::string property, PropertyVector vector)
 }
 
 /**
+ * PropertyList
+ */
+PropertyList::PropertyList(std::vector<PropertyValue> vector)
+    : PropertyValue(PrologList(asPrologTerms(vector))) {
+}
+
+/**
+ * PropertyConjunction
+ */
+PropertyConjunction::PropertyConjunction(PropertyList args)
+    : PropertyValue(PrologConjunction(args.term().asList())) {
+}
+
+/**
  * PropertyQuery
  */
 PropertyQuery::PropertyQuery(PropertyFunctor functor)

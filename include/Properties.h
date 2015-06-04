@@ -60,6 +60,16 @@ public:
   PropertyFunctor(std::string property, PropertyVector vector);
 };
 
+class PropertyList : public PropertyValue {
+public:
+  PropertyList(std::vector<PropertyValue> vector);
+};
+
+class PropertyConjunction : public PropertyValue {
+public:
+  PropertyConjunction(PropertyList args);
+};
+
 class PropertyQuery {
 public:
   PropertyQuery(PropertyFunctor functor);
