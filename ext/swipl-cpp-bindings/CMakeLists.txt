@@ -5,8 +5,8 @@ include(ExternalProject)
 ExternalProject_Add(plbindings
   URL "${CMAKE_CURRENT_SOURCE_DIR}/src"
   CMAKE_ARGS -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
+    -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
   PREFIX "${CMAKE_CURRENT_BINARY_DIR}"
-  INSTALL_COMMAND ""
 )
 
 ExternalProject_Get_Property(plbindings source_dir)

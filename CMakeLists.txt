@@ -20,6 +20,13 @@ add_library(swiplcpplp SHARED src/Properties.cpp)
 target_link_libraries(swiplcpplp swiplcpp)
 add_dependencies(swiplcpplp ${PLBINDINGS_PROJECT_NAME})
 
+install(TARGETS swiplcpplp DESTINATION lib)
+install(FILES
+  include/Properties.h include/PropertyBag.h
+  include/PropertyGenerator.h include/PropertyMap.h
+  include/PropertyVault.h
+  DESTINATION include)
+
 add_subdirectory("ext/gtest")
 add_subdirectory("tests")
 
