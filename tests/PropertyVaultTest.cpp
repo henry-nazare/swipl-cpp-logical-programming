@@ -35,12 +35,11 @@ TEST_F(PropertyVaultTest, ExampleSucc) {
   vault.add(succ_pred, bag);
 
   PropertyVariable num, succ;
-  int solutions = 0;
-  vault.query(succ_pred({num, succ}), [&]() {
-    ASSERT_EQ(map.get(num.get()) + 1, map.get(succ.get()));
-    solutions = solutions + 1;
-  });
-  ASSERT_EQ(solutions, 3);
+  auto solutions = vault.query(succ_pred({num, succ})).solutions();
+  ASSERT_EQ(solutions.size(), 3);
+  for (auto &solution : solutions) {
+    ASSERT_EQ(map.get(solution, num) + 1, map.get(solution, succ));
+  }
 }
 
 }

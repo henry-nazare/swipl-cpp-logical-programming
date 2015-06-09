@@ -105,16 +105,30 @@ PropertyConjunction::PropertyConjunction(PropertyList args)
 }
 
 /**
+ * PropertySolution
+ */
+PropertySolution::PropertySolution(PrologSolution solution)
+    : solution_(solution) {
+}
+
+PropertyValue PropertySolution::get(PropertyValue var) const {
+  PrologTerm res = solution_.get(var.term());
+  return PropertyValue(res.asString().str(), res);
+}
+
+/**
  * PropertyQuery
  */
 PropertyQuery::PropertyQuery(PropertyFunctor functor)
     : query_(functor.term().asFunctor()) {
 }
 
-void PropertyQuery::apply(std::function<void ()> callback) {
-  query_.apply([&](PrologTermVector) {
-    callback();
-  });
+std::vector<PropertySolution> PropertyQuery::solutions() const {
+  std::vector<PropertySolution> solutions;
+  for (auto &solution : query_.solutions()) {
+    solutions.push_back(PropertySolution(solution));
+  }
+  return solutions;
 }
 
 bool std::less<PropertyValue>

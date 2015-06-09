@@ -36,6 +36,10 @@ public:
     return lookup(item).get()->second;
   }
 
+  T get(PropertySolution solution, PropertyValue property) const {
+    return lookup(solution.get(property)).get()->second;
+  }
+
   T get(PropertyValue property) const {
     return lookup(property).get()->second;
   }

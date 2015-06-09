@@ -70,11 +70,21 @@ public:
   PropertyConjunction(PropertyList args);
 };
 
+class PropertySolution {
+public:
+  PropertySolution(PrologSolution solution);
+
+  PropertyValue get(PropertyValue var) const;
+
+private:
+  PrologSolution solution_;
+};
+
 class PropertyQuery {
 public:
   PropertyQuery(PropertyFunctor functor);
 
-  void apply(std::function<void ()> callback);
+  std::vector<PropertySolution> solutions() const;
 
 private:
   PrologQuery query_;

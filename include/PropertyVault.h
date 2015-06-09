@@ -15,8 +15,8 @@ public:
     PrologCall::fact(functor.term());
   }
 
-  void query(PropertyFunctor functor, std::function<void ()> callback) {
-    PropertyQuery(functor).apply(callback);
+  PropertyQuery query(PropertyFunctor functor) {
+    return PropertyQuery(functor);
   }
 };
 
